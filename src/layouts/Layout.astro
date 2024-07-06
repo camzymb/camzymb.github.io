@@ -1,0 +1,37 @@
+---
+const { title } = Astro.props;
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <style is:global>
+        @font-face {
+            font-family: 'Frankfurter Highlight';
+            src: url('/src/fonts/frankfurter-highlight.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, 
+                #ffffff, #ffe0e5, #ffcccb, #ffd8b1, #ffffff
+            );
+            background-attachment: fixed;
+            color: #333;
+        }
+        .frankfurter {
+            font-family: 'Frankfurter Highlight', cursive;
+        }
+    </style>
+</head>
+<body>
+    <slot />
+</body>
+</html>
