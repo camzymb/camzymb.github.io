@@ -1,0 +1,27 @@
+<section class="image-showcase">
+    <div class="image-grid">
+        <img src="/src/images/camera1.webp" alt="Professional Camera">
+        <img src="/src/images/camera_lens.jpeg" alt="Camera Lens">
+        <img src="/src/images/beach.jpeg" alt="Landscape Photography">
+        <img src="/src/images/streetphoto.webp" alt="Street Photo">
+    </div>
+</section>
+
+<style>
+    .image-showcase {
+        width: 100%;
+        overflow: hidden;
+    }
+    .image-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px;
+    }
+    .image-grid img {
+        width: calc(25% - 15px); /* 25% width minus gap */
+        height: 400px; /* Increased height for taller images */
+        object-fit: cover; /* Maintain aspect ratio and cover area */
+        border-radius: 10px;
+    }
+</style>

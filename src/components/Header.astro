@@ -5,8 +5,11 @@ import tarsierLogo from '../images/tarsier-logo.png';
 
 <header>
     <div class="logo">
-        <Image src={tarsierLogo} alt="Tarsier Digital Solutions Logo" width={50} height={50} />
-        <h1 class="frankfurter">TARSIER DIGITAL Solutions</h1>
+        <Image src={tarsierLogo} alt="Tarsier Digital Solutions Logo" width={120} height={120} />
+        <div class="logo-text">
+            <h1 class="frankfurter tarsier-text">TARSIER DIGITAL</h1>
+            <span class="schoolbell solutions">Solutions</span>
+        </div>
     </div>
     <nav>
         <a href="#home" class="frankfurter">HOME</a>
@@ -31,14 +34,34 @@ import tarsierLogo from '../images/tarsier-logo.png';
     .logo img {
         margin-right: 10px;
     }
-    .logo h1 {
-        font-size: 24px;
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .logo-text h1 {
+        font-size: 40px;
         margin: 0;
+        line-height: 1;
+    }
+    .tarsier-text {
+        font-weight: normal;
+        -webkit-text-stroke: 0.5px #333;
+        paint-order: stroke fill;
+    }
+    .solutions {
+        font-size: 35px;
+        margin-top: -5px;
+    }
+    nav {
+        display: flex;
+        gap: 20px; /* Reduced gap to prevent wrapping */
     }
     nav a {
-        margin-left: 20px;
         text-decoration: none;
         color: #333;
-        font-size: 18px;
+        font-size: 28px; /* Slightly reduced font size */
+        font-weight: normal;
+        white-space: nowrap; /* Prevent wrapping of nav items */
     }
 </style>

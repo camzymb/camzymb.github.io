@@ -2,11 +2,31 @@
 import MainLayout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import ImageGrid from '../components/PortfolioShowcase.astro';
+import ImageShowcase from '../components/ImageShowcase.astro';
 ---
 
 <MainLayout title="Tarsier Digital Solutions">
-    <Header />
-    <Hero />
-    <ImageGrid />
+    <div class="content-wrapper">
+        <Header />
+        <Hero />
+    </div>
+    <ImageShowcase />
 </MainLayout>
+
+<style>
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 40vh;
+    }
+    :global(header) {
+        margin-bottom: -75px; /* Adjust as needed */
+    }
+    :global(header nav) {
+        padding-right: 135px;
+    }
+    :global(.hero) {
+        padding-top: 0;
+        margin-bottom: 50px; /* Add space between hero and image showcase */
+    }
+</style>
