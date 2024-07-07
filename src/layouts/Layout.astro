@@ -27,6 +27,9 @@ const { title } = Astro.props;
             font-style: normal;
             font-display: swap;
         }
+		.custom-gradient {
+        	background: linear-gradient(to right, #f8eed8, #e0c9a6, #edb5aa, #ffb3f2, #f7d3b5);
+    	}
     </style>
     <script>
         import Alpine from 'alpinejs';
@@ -34,7 +37,7 @@ const { title } = Astro.props;
         Alpine.start();
     </script>
 </head>
-<body class="bg-gradient-to-r from-white via-pink-100 via-red-100 via-orange-100 to-yellow-100 bg-fixed text-gray-800">
+<body class="custom-gradient bg-fixed text-gray-800">
     <slot />
 </body>
 </html>
