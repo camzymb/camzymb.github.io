@@ -1,67 +1,44 @@
 ---
 import { Image } from 'astro:assets';
 import tarsierLogo from '../images/tarsier-logo.png';
+
+interface NavItem {
+    href: string;
+    text: string;
+}
+
+const navItems: NavItem[] = [
+    { href: "#home", text: "HOME" },
+    { href: "#about", text: "ABOUT US" },
+    { href: "#services", text: "SERVICES" },
+    { href: "#portfolio", text: "PORTFOLIO" },
+    { href: "#blog", text: "BLOG" },
+];
 ---
 
-<header>
-    <div class="logo">
+<header x-data="{ open: false }" class="p-5 flex justify-between items-center">
+    <div class="flex items-center">
         <Image src={tarsierLogo} alt="Tarsier Digital Solutions Logo" width={120} height={120} />
-        <div class="logo-text">
-            <h1 class="frankfurter tarsier-text">TARSIER DIGITAL</h1>
-            <span class="schoolbell solutions">Solutions</span>
+        <div class="flex flex-col items-start ml-2">
+            <h1 class="font-frankfurter text-4xl m-0 leading-none [-webkit-text-stroke:0.5px_#333] [paint-order:stroke_fill]">
+                TARSIER DIGITAL
+            </h1>
+            <span class="font-schoolbell text-3xl mt-[-5px]">Solutions</span>
         </div>
     </div>
-    <nav>
-        <a href="#home" class="frankfurter">HOME</a>
-        <a href="#about" class="frankfurter">ABOUT US</a>
-        <a href="#services" class="frankfurter">SERVICES</a>
-        <a href="#portfolio" class="frankfurter">PORTFOLIO</a>
-        <a href="#blog" class="frankfurter">BLOG</a>
+    <nav class="hidden md:flex gap-5">
+        {navItems.map((item) => (
+            <a href={item.href} class="font-frankfurter text-2xl text-gray-800 no-underline whitespace-nowrap">
+                {item.text}
+            </a>
+        ))}
     </nav>
+    <button @click="open = !open" class="md:hidden">Menu</button>
+    <div x-show="open" class="absolute top-full left-0 right-0 bg-white md:hidden">
+        {navItems.map((item) => (
+            <a href={item.href} class="block py-2 px-4 font-frankfurter text-2xl text-gray-800 no-underline">
+                {item.text}
+            </a>
+        ))}
+    </div>
 </header>
-
-<style>
-    header {
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .logo {
-        display: flex;
-        align-items: center;
-    }
-    .logo img {
-        margin-right: 10px;
-    }
-    .logo-text {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .logo-text h1 {
-        font-size: 40px;
-        margin: 0;
-        line-height: 1;
-    }
-    .tarsier-text {
-        font-weight: normal;
-        -webkit-text-stroke: 0.5px #333;
-        paint-order: stroke fill;
-    }
-    .solutions {
-        font-size: 35px;
-        margin-top: -5px;
-    }
-    nav {
-        display: flex;
-        gap: 20px; /* Reduced gap to prevent wrapping */
-    }
-    nav a {
-        text-decoration: none;
-        color: #333;
-        font-size: 28px; /* Slightly reduced font size */
-        font-weight: normal;
-        white-space: nowrap; /* Prevent wrapping of nav items */
-    }
-</style>

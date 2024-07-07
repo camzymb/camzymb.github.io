@@ -6,27 +6,9 @@ import ImageShowcase from '../components/ImageShowcase.astro';
 ---
 
 <MainLayout title="Tarsier Digital Solutions">
-    <div class="content-wrapper">
-        <Header />
-        <Hero />
-    </div>
-    <ImageShowcase />
+  <div class="flex flex-col min-h-[40vh]">
+    <Header />
+    <Hero />
+  </div>
+  <ImageShowcase />
 </MainLayout>
-
-<style>
-    .content-wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 40vh;
-    }
-    :global(header) {
-        margin-bottom: -75px; /* Adjust as needed */
-    }
-    :global(header nav) {
-        padding-right: 135px;
-    }
-    :global(.hero) {
-        padding-top: 0;
-        margin-bottom: 50px; /* Add space between hero and image showcase */
-    }
-</style>

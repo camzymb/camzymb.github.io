@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "tarsier_digital_solutions",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,19 +10,29 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.7.0",
     "astro": "^4.11.5",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
+    "@astrojs/tailwind": "^5.1.0",
     "@eslint/js": "^9.6.0",
+    "@types/alpinejs": "^3.13.10",
+    "@types/eslint__js": "^8.42.3",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.15.0",
+    "alpinejs": "^3.14.1",
+    "daisyui": "^4.12.10",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^1.2.2",
-    "eslint-plugin-react": "^7.34.3",
     "globals": "^15.8.0",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
+    "tailwindcss": "^3.4.4",
     "typescript-eslint": "^7.15.0"
+  },
+  "astro": {
+    "config": "./astro.config.ts"
   }
 }
