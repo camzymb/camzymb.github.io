@@ -24,11 +24,9 @@ const testimonials: Testimonial[] = [
         image: "/src/images/tech-innovators.png"
     }
 ];
-
-const testimonials1 = JSON.stringify(testimonials);
 ---
 
-<section class="py-16 px-4 bg-gradient-to-r from-blue-100 to-purple-100">
+<section class="py-16 px-4">
     <div class="container mx-auto">
         <h2 class="text-4xl font-frankfurter text-center mb-8">TESTIMONIALS</h2>
         <p class="text-xl font-schoolbell text-center mb-12">Hear what our clients have to say about our work</p>
@@ -52,9 +50,9 @@ const testimonials1 = JSON.stringify(testimonials);
         </div>
 
         <!-- Mobile view (carousel) -->
-        <div class="md:hidden relative" x-data={`{ currentTestimonial: 0, testimonials: ${testimonials1} }`}>
+        <div class="md:hidden relative" id="testimonialCarousel">
             <div class="overflow-hidden">
-                <div class="flex transition-transform duration-300 ease-in-out" :style="`transform: translateX(-${currentTestimonial * 100}%)`">
+                <div class="flex transition-transform duration-300 ease-in-out" id="testimonialSlider">
                     {testimonials.map((testimonial, index) => (
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center">
@@ -73,12 +71,12 @@ const testimonials1 = JSON.stringify(testimonials);
                     ))}
                 </div>
             </div>
-            <button @click="currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">
+            <button id="prevButton" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
-            <button @click="currentTestimonial = (currentTestimonial + 1) % testimonials.length" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">
+            <button id="nextButton" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -86,3 +84,40 @@ const testimonials1 = JSON.stringify(testimonials);
         </div>
     </div>
 </section>
+
+<script define:vars={{ testimonials }}>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carousel = document.getElementById('testimonialCarousel');
+        const slider = document.getElementById('testimonialSlider');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+
+        if (!carousel || !slider || !prevButton || !nextButton) {
+            console.error('One or more carousel elements not found');
+            return;
+        }
+
+        let currentTestimonial = 0;
+
+        function updateCarousel() {
+            if (slider) {
+                slider.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+            }
+        }
+
+        function handlePrevClick() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateCarousel();
+        }
+
+        function handleNextClick() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateCarousel();
+        }
+
+        prevButton.addEventListener('click', handlePrevClick);
+        nextButton.addEventListener('click', handleNextClick);
+
+        updateCarousel();
+    });
+</script>

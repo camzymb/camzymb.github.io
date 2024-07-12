@@ -1,5 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import '@fontsource/league-spartan';
+import '@fontsource/schoolbell';
 
 interface Props {
     title: string;
@@ -13,7 +15,6 @@ const { title } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
     <ViewTransitions />
     <style is:global>
         @font-face {
@@ -30,12 +31,19 @@ const { title } = Astro.props;
             font-style: normal;
             font-display: swap;
         }
-        .custom-gradient {
-            background: linear-gradient(to right, #f8eed8, #e0c9a6, #edb5aa, #ffb3f2, #f7d3b5);
-        }
+		.tarsier-cloudy-background {
+			background: 
+				radial-gradient(circle at 50% 50%, rgba(245, 245, 240, 0.7) 0%, rgba(245, 245, 240, 0) 70%),
+				radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.5) 0%, rgba(255, 182, 193, 0) 70%),
+				radial-gradient(circle at 20% 80%, rgba(255, 218, 185, 0.5) 0%, rgba(255, 218, 185, 0) 70%),
+				linear-gradient(to right, #dbc4a0, #ffb6c1, #cdc286);
+			background-size: 100% 100%;
+		}
     </style>
 </head>
-<body class="custom-gradient bg-fixed text-gray-800">
-    <slot />
+<body>
+    <div class="tarsier-cloudy-background min-h-screen">
+        <slot />
+    </div>
 </body>
 </html>

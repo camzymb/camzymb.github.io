@@ -11,22 +11,22 @@ const services: Service[] = [
     {
         title: "VIDEO CREATION",
         description: "Engage your audience with professionally crafted videos tailored for social media",
-        image: "/src/images/video-creation.jpg"
+        image: "/src/images/camera1.webp"
     },
     {
         title: "DESIGNING BANNERS AND FLYERS",
         description: "Create banners and banners for events",
-        image: "/src/images/design-banners.jpg"
+        image: "/src/images/camera2.webp"
     },
     {
         title: "SOCIAL MEDIA STRATEGY",
         description: "Develop a winning social media strategy that aligns with your business goals",
-        image: "/src/images/social-media-strategy.jpg"
+        image: "/src/images/camera_lens.jpeg"
     }
 ];
 ---
-
-<section class="py-16 px-4 bg-gradient-to-r from-blue-100 to-green-100">
+<!-- 
+<section class="py-16 px-4">
     <div class="container mx-auto">
         <h2 class="text-4xl font-frankfurter text-center mb-12">SERVICES OVERVIEW</h2>
         
@@ -38,6 +38,30 @@ const services: Service[] = [
                         <h3 class="font-frankfurter text-xl mb-2">{service.title}</h3>
                         <p class="font-schoolbell text-gray-600">{service.description}</p>
                         <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full font-frankfurter hover:bg-blue-600 transition duration-300">See More</button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section> -->
+
+
+<section class="py-16 px-4">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-frankfurter text-center mb-12">SERVICES OVERVIEW</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service) => (
+                <div class="card bg-gray-300">
+                    <figure>
+                        <Image src={service.image} alt={service.title} width={400} height={300} class="w-full h-48 object-cover" />
+                    </figure>
+                    <div class="card-body p-4">
+                        <h3 class="font-frankfurter text-xl mb-2">{service.title}</h3>
+                        <p class="font-schoolbell text-gray-600">{service.description}</p>
+                        <div class="card-actions justify-center">
+                            <button class="btn mt-4 bg-blue-500 text-white px-4 py-2 rounded-full font-frankfurter hover:bg-blue-600 transition duration-300">See More</button>
+                        </div>
                     </div>
                 </div>
             ))}
